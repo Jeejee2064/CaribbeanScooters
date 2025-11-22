@@ -529,7 +529,7 @@ export default function Home() {
 
         <div className="space-y-3">
           <a 
-            href="https://wa.me/507XXXXXXXX"
+            href="https://wa.me/50764872001"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center justify-center gap-3 w-full bg-[#25D366] hover:bg-[#20bd5a] py-3 rounded-lg font-semibold transition-all"
@@ -539,7 +539,7 @@ export default function Home() {
           </a>
 
           <a 
-            href="mailto:info@caribbeanscooters.com"
+            href="mailto:fernandodinofloripa@gmail.com"
             className="flex items-center justify-center gap-3 w-full bg-white/10 hover:bg-white/20 py-3 rounded-lg font-semibold transition-all"
           >
             {/* Email icon svg */}
@@ -582,8 +582,8 @@ export default function Home() {
               </p>
             </div>
             <div className="flex gap-4">
-              <a href="#" className="text-gray-400 hover:text-[#ffba08] transition-colors">Instagram</a>
-              <a href="#" className="text-gray-400 hover:text-[#ffba08] transition-colors">Facebook</a>
+              <a href="https://www.instagram.com/scootercaribbean/" className="text-gray-400 hover:text-[#ffba08] transition-colors">Instagram</a>
+              <a href="https://www.facebook.com/profile.php?id=61569433118042" className="text-gray-400 hover:text-[#ffba08] transition-colors">Facebook</a>
             </div>
           </div>
         </div>
