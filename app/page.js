@@ -75,59 +75,109 @@ export default function Home() {
         
         <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">
           {/* Navigation */}
-          <motion.nav
-            className="fixed top-0 left-0 right-0 z-50"
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <div className="max-w-6xl mx-auto px-4 py-4">
-              <div className="flex items-center justify-between">
-                <a href="#" className="flex items-center gap-2 opacity-90 hover:opacity-100 transition-opacity">
-                  <Image src="/logoTrans.png" alt="Caribbean Scooters" width={36} height={36} />
-                </a>
-                
-                {/* Desktop Menu */}
-                <div className="hidden md:flex items-center gap-8 text-sm text-white/70">
-                  <a href="#destinations" className="hover:text-white transition-colors">Destinations</a>
-                  <a href="#pricing" className="hover:text-white transition-colors">Prices</a>
-                  <a href="#faq" className="hover:text-white transition-colors">FAQ</a>
-                  <a href="#contact" className="text-white border-b border-white/50 hover:border-white pb-0.5 transition-colors">Contact</a>
-                </div>
+        <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">
+  {/* Navigation */}
+  <motion.nav
+    className="fixed top-0 left-0 right-0 z-50"
+    initial={{ opacity: 0, y: -10 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.5 }}
+  >
+    <div className="max-w-6xl mx-auto px-4 py-4">
+      <div className="flex items-center justify-between">
+        
+        {/* Logo */}
+        <a 
+          href="#"
+          className="flex items-center gap-2 opacity-90 hover:opacity-100 transition-opacity"
+        >
+          <Image src="/logoTrans.png" alt="Caribbean Scooters" width={36} height={36} />
+        </a>
 
-                {/* Mobile Burger */}
-                <button 
-                  className="md:hidden text-white p-2"
-                  onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                >
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    {mobileMenuOpen ? (
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                    ) : (
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                    )}
-                  </svg>
-                </button>
-              </div>
+        {/* Desktop Menu */}
+        <div className="hidden md:flex items-center gap-8 text-sm text-white/70">
+          <a href="#destinations" className="hover:text-white transition-colors">Destinations</a>
+          <a href="#pricing" className="hover:text-white transition-colors">Prices</a>
+          <a href="#faq" className="hover:text-white transition-colors">FAQ</a>
+          <a href="#contact" className="text-white border-b border-white/50 hover:border-white pb-0.5 transition-colors">Contact</a>
+        </div>
 
-              {/* Mobile Menu */}
-              {mobileMenuOpen && (
-                <motion.div 
-                  className="md:hidden mt-4 bg-[#0a0a0a]/95 backdrop-blur-sm rounded-lg border border-white/10 p-4"
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <div className="flex flex-col gap-4 text-white/80">
-                    <a href="#destinations" onClick={() => setMobileMenuOpen(false)} className="hover:text-white transition-colors py-2">Destinations</a>
-                    <a href="#pricing" onClick={() => setMobileMenuOpen(false)} className="hover:text-white transition-colors py-2">Prices</a>
-                    <a href="#faq" onClick={() => setMobileMenuOpen(false)} className="hover:text-white transition-colors py-2">FAQ</a>
-                    <a href="#contact" onClick={() => setMobileMenuOpen(false)} className="hover:text-white transition-colors py-2 border-t border-white/10 pt-4">Contact</a>
-                  </div>
-                </motion.div>
-              )}
+        {/* Desktop Language Switcher */}
+        <motion.div 
+          className="hidden md:flex items-center gap-3 text-white/80 ml-6"
+          initial={{ opacity: 0, y: -5 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4, delay: 0.2 }}
+        >
+          <a href="/" className="px-2 py-1 rounded-md hover:bg-white/10 hover:text-white transition">EN</a>
+          <a href="/es" className="px-2 py-1 rounded-md hover:bg-white/10 hover:text-white transition">ES</a>
+          <a href="/br" className="px-2 py-1 rounded-md hover:bg-white/10 hover:text-white transition">BR</a>
+        </motion.div>
+
+        {/* Mobile Burger */}
+        <button 
+          className="md:hidden text-white p-2"
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+        >
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            {mobileMenuOpen ? (
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            ) : (
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+            )}
+          </svg>
+        </button>
+
+      </div>
+
+      {/* Mobile Menu */}
+      {mobileMenuOpen && (
+        <motion.div 
+          className="md:hidden mt-4 bg-[#0a0a0a]/95 backdrop-blur-sm rounded-lg border border-white/10 p-4"
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.2 }}
+        >
+          <div className="flex flex-col gap-4 text-white/80">
+            <a href="#destinations" onClick={() => setMobileMenuOpen(false)} className="hover:text-white transition-colors py-2">Destinations</a>
+            <a href="#pricing" onClick={() => setMobileMenuOpen(false)} className="hover:text-white transition-colors py-2">Prices</a>
+            <a href="#faq" onClick={() => setMobileMenuOpen(false)} className="hover:text-white transition-colors py-2">FAQ</a>
+            <a href="#contact" onClick={() => setMobileMenuOpen(false)} className="hover:text-white transition-colors py-2 border-t border-white/10 pt-4">Contact</a>
+          </div>
+
+          {/* Mobile Language Switcher */}
+          <div className="border-t border-white/10 pt-4 mt-3">
+            <div className="flex items-center justify-center gap-4 text-white">
+              <a 
+                href="/" 
+                onClick={() => setMobileMenuOpen(false)} 
+                className="px-3 py-1 rounded-md bg-white/10 hover:bg-white/20 transition"
+              >
+                EN
+              </a>
+              <a 
+                href="/es" 
+                onClick={() => setMobileMenuOpen(false)} 
+                className="px-3 py-1 rounded-md bg-white/10 hover:bg-white/20 transition"
+              >
+                ES
+              </a>
+              <a 
+                href="/br" 
+                onClick={() => setMobileMenuOpen(false)} 
+                className="px-3 py-1 rounded-md bg-white/10 hover:bg-white/20 transition"
+              >
+                BR
+              </a>
             </div>
-          </motion.nav>
+          </div>
+        </motion.div>
+      )}
+
+    </div>
+  </motion.nav>
+</div>
+
 
           <motion.div
             initial={{ opacity: 0, y: -20 }}
