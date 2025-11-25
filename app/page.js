@@ -567,7 +567,7 @@ export default function Home() {
             <span className="text-[#e85d04] text-xl">📍</span>
             <span>
               Calle Segunda, Bocas Town<br />
-              Next to City Hall<br />
+              In front of the City Hall<br />
               Isla Colón, Bocas del Toro, Panama
             </span>
           </p>

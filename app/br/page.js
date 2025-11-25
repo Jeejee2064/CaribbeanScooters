@@ -89,7 +89,7 @@ export default function Home() {
           { icon: "🛵", title: "Flota Bien Mantenida", desc: "Scooters confiables revisados regularmente para tu seguridad" },
           { icon: "🪖", title: "Cascos Incluidos", desc: "Cascos de seguridad incluidos con cada renta" },
           { icon: "🗺️", title: "Mapas de la Isla", desc: "Mapas gratuitos con las mejores rutas y lugares secretos" },
-          { icon: "📞", title: "Soporte 24/7", desc: "Asistencia en carretera cuando la necesites" },
+          { icon: "📞", title: "Soporte", desc: "Asistencia en carretera cuando la necesites" },
           { icon: "🔄", title: "Devoluciones Flexibles", desc: "Fácil recogida y entrega en Bocas Town" },
         ]
       },
@@ -123,7 +123,7 @@ export default function Home() {
           },
           { 
             q: "¿Qué incluye la renta?", 
-            a: "Cada renta incluye el scooter, casco, tanque lleno de gasolina, mapa de la isla y soporte 24/7." 
+            a: "Cada renta incluye el scooter, casco, tanque lleno de gasolina, mapa de la isla y soporte  ." 
           },
           { 
             q: "¿Puedo llevar el scooter a otras islas?", 
@@ -133,10 +133,7 @@ export default function Home() {
             q: "¿Qué pasa si se descompone el scooter?", 
             a: "¡Llámanos cuando sea! Ofrecemos asistencia en carretera gratuita y scooters de reemplazo." 
           },
-          { 
-            q: "¿Se requiere depósito?", 
-            a: "Sí, se requiere un depósito reembolsable de $100, pagadero en efectivo o tarjeta." 
-          },
+
         ]
       },
       contact: {
@@ -216,7 +213,7 @@ export default function Home() {
           { icon: "⛽", title: "Full Tank Included", desc: "Start your adventure with a full tank of gas" },
           { icon: "🪖", title: "Helmets Provided", desc: "Safety helmets included with every rental" },
           { icon: "🗺️", title: "Island Maps", desc: "Free maps with best routes and hidden spots" },
-          { icon: "📞", title: "24/7 Support", desc: "Roadside assistance whenever you need it" },
+          { icon: "📞", title: "  Support", desc: "Roadside assistance whenever you need it" },
           { icon: "🔄", title: "Flexible Returns", desc: "Easy pickup and drop-off in Bocas Town" },
         ]
       },
@@ -250,7 +247,7 @@ export default function Home() {
           },
           { 
             q: "What's included in the rental?", 
-            a: "Each rental includes the scooter, helmet, full tank of gas, island map, and 24/7 support." 
+            a: "Each rental includes the scooter, helmet, full tank of gas, island map, and   support." 
           },
           { 
             q: "Can I take the scooter to other islands?", 
@@ -342,8 +339,7 @@ export default function Home() {
           { icon: "🛵", title: "Frota Bem Mantida", desc: "Scooters confiáveis revisadas regularmente para sua segurança" },
           { icon: "⛽", title: "Entrega a domicilio", desc: "Entregamos e recoremos a onde o cliente deseja" },
           { icon: "🪖", title: "Capacetes Fornecidos", desc: "Capacetes de segurança incluídos em cada aluguel" },
-          { icon: "🗺️", title: "Mapas da Ilha", desc: "Mapas gratuitos com as melhores rotas e lugares secretos" },
-          { icon: "📞", title: "Suporte 24/7", desc: "Assistência na estrada sempre que precisar" },
+          { icon: "📞", title: "Suporte  ", desc: "Assistência na estrada sempre que precisar" },
           { icon: "🔄", title: "Devoluções Flexíveis", desc: "Fácil retirada e entrega em Bocas Town" },
         ]
       },
@@ -377,7 +373,7 @@ export default function Home() {
           },
           { 
             q: "O que está incluído no aluguel?", 
-            a: "Cada aluguel inclui a scooter, capacete, tanque cheio de gasolina, mapa da ilha e suporte 24/7." 
+            a: "Cada aluguel inclui a scooter, capacete. soporte." 
           },
           { 
             q: "Posso levar a scooter para outras ilhas?", 
@@ -385,12 +381,12 @@ export default function Home() {
           },
           { 
             q: "O que acontece se a scooter quebrar?", 
-            a: "Ligue para nós a qualquer hora! Oferecemos assistência na estrada gratuita e scooters de substituição." 
+            a: "O cliente e responsavel por qualquer dano a scooter ocasionado por mal uso, a caribbean scooter se responsabiliza per qualquer dano proveniente de desgaste da moto ou dano natural da moto." 
           },
           { 
-            q: "É necessário depósito?", 
-            a: "Sim, é necessário um depósito reembolsável de $100, pagável em dinheiro ou cartão." 
-          },
+            q: "Qual tipo de Scooter a Caribbean Scooter aluga?", 
+            a: "A Caribbean Scooter somente trabalha com HONDA NAVI, 120cc, automaticas, perfeita para uma ou duas pessoas." 
+          },      
         ]
       },
       contact: {
@@ -845,14 +841,7 @@ export default function Home() {
             ))}
           </motion.div>
 
-          <motion.p 
-            className="text-center text-gray-500 mt-8"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-          >
-            {t.pricing.note}
-          </motion.p>
+
         </div>
       </section>
 
