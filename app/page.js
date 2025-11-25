@@ -561,7 +561,7 @@ export default function Home() {
         className="bg-[#1a1a1a] p-8 rounded-2xl border border-white/5"
         variants={fadeInUp}
       >
-        <h3 className="text-2xl font-semibold mb-6">Find Us</h3>
+        <h3 className="text-2xl font-semibold mb-6">Contact</h3>
         <div className="space-y-4 text-gray-300 mb-8">
           <p className="flex items-start gap-3">
             <span className="text-[#e85d04] text-xl">📍</span>
