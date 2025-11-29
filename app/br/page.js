@@ -869,6 +869,29 @@ const content = {
       {/* Modals */}
       <LightboxModal />
       <DestinationModal />
+            {/* Footer */}
+            <footer className="py-12 px-4 border-t border-white/5">
+              <div className="max-w-6xl mx-auto">
+                <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+                  <div className="flex items-center gap-3">
+                    <Image src="/logoTrans.png" alt="Caribbean Scooters" width={50} height={50} />
+                    <span className="font-semibold text-lg">Caribbean Scooters</span>
+                  </div>
+                  <div className="text-center">
+                    <p className="text-gray-500 text-sm">
+                      {t.footer.copyright}
+                    </p>
+                    <p className="text-gray-600 text-sm mt-1">
+                      {t.footer.madeBy} <a href="https://bocasdigital.com" target="_blank" rel="noopener noreferrer" className="text-[#ffba08] hover:underline">Bocas Digital</a>
+                    </p>
+                  </div>
+                  <div className="flex gap-4">
+                    <a href="https://www.instagram.com/scootercaribbean/" className="text-gray-400 hover:text-[#ffba08] transition-colors">Instagram</a>
+                    <a href="https://www.facebook.com/profile.php?id=61569433118042" className="text-gray-400 hover:text-[#ffba08] transition-colors">Facebook</a>
+                  </div>
+                </div>
+              </div>
+            </footer>
     </main>
   );
 }

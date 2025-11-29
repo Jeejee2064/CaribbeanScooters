@@ -1,5 +1,5 @@
-import { Inter, Montserrat } from 'next/font/google';
-import './globals.css'
+import { Inter, Montserrat } from 'next/font/google'
+import '../globals.css'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -15,19 +15,19 @@ const montserrat = Montserrat({
 
 export const metadata = {
   title: {
-    default: "🚀 Honda Navi Scooter Rental Bocas del Toro | Caribbean Scooters #1",
-    template: "%s | Best Scooter Rental in Bocas del Toro"
+    default: "🚀 Alquiler de Scooter Honda Navi en Bocas del Toro | Caribbean Scooters #1",
+    template: "%s | Mejor Alquiler de Scooters en Bocas del Toro"
   },
-  description: "⭐️⭐️⭐️⭐️⭐️ Rent Honda Navi Scooters in Bocas del Toro's Isla Colón. Explore Starfish Beach, Bluff Beach, Boca del Drago. Automatic, Easy to Ride. FREE Delivery. Best Prices Guaranteed. Book Now! +507 6487-2001",
-  keywords: "scooter rental bocas del toro, honda navi rental isla colon, rent scooter starfish beach, bluff beach scooter rental, boca del drago scooter, panama scooter rental, atv rental bocas del toro, golf cart rental bocas, transportation bocas del toro, cheap scooter rental isla colon, honda navi 120cc rental, automatic scooter bocas, where to rent scooter bocas town, best scooter rental bocas del toro 2024",
+  description: "⭐️⭐️⭐️⭐️⭐️ Alquila scooters Honda Navi en Isla Colón, Bocas del Toro. Explora Playa Estrella, Bluff, Drago. Scooters automáticas, fáciles de manejar. ENTREGA GRATIS. ¡Reserva ahora! +507 6487-2001",
+  keywords: "alquiler de scooters bocas del toro, scooter honda navi isla colón, rentar scooter playa estrella, alquiler scooter bluff beach, boca del drago scooter, alquiler de motos panamá, alquiler scooter barato bocas town, honda navi 120cc alquiler",
   authors: [{ name: "Caribbean Scooters" }],
   creator: "Caribbean Scooters",
   publisher: "Caribbean Scooters",
-  classification: "Vehicle Rental Services",
-  category: "Travel & Tourism",
+  classification: "Servicios de Alquiler de Vehículos",
+  category: "Turismo y Viajes",
   metadataBase: new URL('https://caribbean-scooters.vercel.app'),
   alternates: {
-    canonical: '/',
+    canonical: '/es',
     languages: {
       'en': '/',
       'es': '/es',
@@ -35,19 +35,19 @@ export const metadata = {
     },
   },
   openGraph: {
-    title: "🚀 #1 Honda Navi Scooter Rental in Bocas del Toro | Caribbean Scooters",
-    description: "⭐️⭐️⭐️⭐️⭐️ BEST RATED: Rent Honda Navi scooters in Isla Colón. Explore Starfish Beach, Bluff Beach, Boca del Drago. Automatic, Easy to Ride. FREE Delivery. Book Now!",
-    url: 'https://caribbean-scooters.vercel.app',
+    title: "🚀 #1 Alquiler de Scooter Honda Navi en Bocas del Toro | Caribbean Scooters",
+    description: "⭐️⭐️⭐️⭐️⭐️ Alquiler de scooters Honda Navi en Isla Colón. Explora Playa Estrella, Bluff y Drago. Automáticas, fáciles de manejar. ENTREGA GRATIS.",
+    url: 'https://caribbean-scooters.vercel.app/es',
     siteName: 'Caribbean Scooters - Bocas del Toro',
     images: [
       {
         url: '/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'Caribbean Scooters - #1 Honda Navi Rental in Bocas del Toro - Starfish Beach - Bluff Beach',
+        alt: 'Caribbean Scooters - Alquiler de Honda Navi en Bocas del Toro',
       },
     ],
-    locale: 'en_US',
+    locale: 'es_PA',
     type: 'website',
     emails: ['fernandodinofloripa@gmail.com'],
     phoneNumbers: ['+50764872001'],
@@ -58,8 +58,8 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: "🚀 #1 Scooter Rental in Bocas del Toro | Caribbean Scooters",
-    description: "⭐️⭐️⭐️⭐️⭐️ Rent Honda Navi scooters - Explore Starfish Beach, Bluff Beach & more in Isla Colón. Automatic, Easy to Ride. FREE Delivery.",
+    title: "🚀 #1 Alquiler de Scooters en Bocas del Toro | Caribbean Scooters",
+    description: "⭐️⭐️⭐️⭐️⭐️ Alquila scooters Honda Navi: Explora Playa Estrella, Bluff y más en Isla Colón. Automáticas, fáciles de manejar.",
     images: ['/twitter-image.jpg'],
     creator: '@caribbeanscooter',
     site: '@caribbeanscooter',
@@ -88,13 +88,13 @@ export default function RootLayout({ children }) {
     '@type': 'VehicleRentalBusiness',
     '@id': 'https://caribbean-scooters.vercel.app/#organization',
     name: 'Caribbean Scooters',
-    description: 'Premium Honda Navi scooter rentals in Bocas del Toro, Panama. Explore Isla Colón, Starfish Beach, Bluff Beach, and Boca del Drago with our automatic scooters.',
+    description: 'Alquiler premium de scooters Honda Navi en Bocas del Toro, Panamá. Explora Isla Colón, Playa Estrella, Bluff Beach y Boca del Drago.',
     url: 'https://caribbean-scooters.vercel.app',
     telephone: '+50764872001',
     email: 'fernandodinofloripa@gmail.com',
     address: {
       '@type': 'PostalAddress',
-      streetAddress: 'Calle Segunda, Next to the Town Hall',
+      streetAddress: 'Calle Segunda, al lado de la Alcaldía',
       addressLocality: 'Bocas Town',
       addressRegion: 'Bocas del Toro',
       addressCountry: 'PA',
@@ -119,8 +119,8 @@ export default function RootLayout({ children }) {
     makesOffer: [
       {
         '@type': 'Offer',
-        name: 'Honda Navi 120cc Scooter Rental',
-        description: 'Automatic scooter rental perfect for exploring Isla Colón',
+        name: 'Alquiler de Scooter Honda Navi 120cc',
+        description: 'Scooter automática perfecta para explorar Isla Colón',
         areaServed: 'Isla Colón, Bocas del Toro',
         priceSpecification: {
           '@type': 'PriceSpecification',
@@ -149,34 +149,34 @@ export default function RootLayout({ children }) {
     mainEntity: [
       {
         '@type': 'Question',
-        name: 'Do I need a drivers license to rent a scooter in Bocas del Toro?',
+        name: '¿Necesito licencia de conducir para alquilar una scooter en Bocas del Toro?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Yes, a valid drivers license is required for scooter rental in Bocas del Toro. International licenses are accepted at Caribbean Scooters.'
+          text: 'Sí, necesitas una licencia de conducir válida. Las licencias internacionales son aceptadas por Caribbean Scooters.'
         }
       },
       {
         '@type': 'Question',
-        name: 'What is the best scooter for exploring Isla Colón?',
+        name: '¿Cuál es la mejor scooter para explorar Isla Colón?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'The Honda Navi 120cc automatic is perfect for exploring Isla Colón. Its easy to ride, automatic transmission, and great fuel economy make it ideal for visiting Starfish Beach, Bluff Beach, and Boca del Drago.'
+          text: 'La Honda Navi 120cc automática es ideal para recorrer Isla Colón. Es fácil de manejar y muy económica.'
         }
       },
       {
         '@type': 'Question',
-        name: 'Can I take the scooter to Starfish Beach?',
+        name: '¿Puedo llevar la scooter hasta Playa Estrella?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Yes! Our Honda Navi scooters are perfect for the ride to Starfish Beach. The journey takes about 35 minutes from Bocas Town and offers beautiful scenery along the way.'
+          text: '¡Sí! Las Honda Navi son perfectas para ir a Playa Estrella. El trayecto dura aproximadamente 35 minutos desde Bocas Town.'
         }
       },
       {
         '@type': 'Question',
-        name: 'What are your scooter rental prices in Bocas del Toro?',
+        name: '¿Cuáles son los precios de alquiler?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'We offer competitive scooter rental prices starting at $25 for 2 hours, $45 for a full day, with weekly rates as low as $35 per day. All rentals include helmet and delivery in Bocas Town.'
+          text: 'Ofrecemos precios desde $25 por 2 horas, $45 por un día completo y tarifas semanales desde $35 por día. Incluye casco y entrega en Bocas Town.'
         }
       }
     ]
@@ -189,26 +189,26 @@ export default function RootLayout({ children }) {
       {
         '@type': 'ListItem',
         position: 1,
-        name: 'Home',
-        item: 'https://caribbean-scooters.vercel.app'
+        name: 'Inicio',
+        item: 'https://caribbean-scooters.vercel.app/es'
       },
       {
         '@type': 'ListItem',
         position: 2,
-        name: 'Scooter Rental Bocas del Toro',
-        item: 'https://caribbean-scooters.vercel.app/#scooter-rental'
+        name: 'Alquiler de Scooters en Bocas del Toro',
+        item: 'https://caribbean-scooters.vercel.app/es/#scooter-rental'
       },
       {
         '@type': 'ListItem',
         position: 3,
-        name: 'Honda Navi Rental Isla Colón',
-        item: 'https://caribbean-scooters.vercel.app/#honda-navi'
+        name: 'Honda Navi Isla Colón',
+        item: 'https://caribbean-scooters.vercel.app/es/#honda-navi'
       }
     ]
   }
 
   return (
-    <html lang="en" className={`${inter.variable} ${montserrat.variable}`}>
+    <html lang="es" className={`${inter.variable} ${montserrat.variable}`}>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -229,63 +229,52 @@ export default function RootLayout({ children }) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
         />
 
-        {/* Viewport Optimization */}
+        {/* Mobile */}
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
-        
-        {/* Theme Color */}
+
+        {/* Theme */}
         <meta name="theme-color" content="#e85d04" />
         <meta name="msapplication-TileColor" content="#e85d04" />
-        
-        {/* Apple Touch Icons */}
+
+        {/* Icons */}
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
         <link rel="manifest" href="/site.webmanifest" />
-        
-        {/* Performance Hints */}
-        <link rel="dns-prefetch" href="//fonts.googleapis.com" />
-        <link rel="dns-prefetch" href="//fonts.gstatic.com" />
-        
-        {/* Geo Tags */}
+
+        {/* Geo */}
         <meta name="geo.region" content="PA-1" />
         <meta name="geo.placename" content="Bocas del Toro, Isla Colón" />
         <meta name="geo.position" content="9.3400;-82.2400" />
         <meta name="ICBM" content="9.3400, -82.2400" />
-        
-        {/* Business Verification */}
-        <meta name="facebook-domain-verification" content="your-facebook-verification" />
-        
-        {/* Additional Meta for Local SEO */}
-        <meta name="location" content="Bocas Town, Isla Colón, Bocas del Toro, Panama" />
-        <meta name="address" content="Calle Segunda, Bocas Town, Next to Town Hall" />
+
+        {/* Local SEO */}
+        <meta name="location" content="Bocas Town, Isla Colón, Bocas del Toro, Panamá" />
+        <meta name="address" content="Calle Segunda, Bocas Town, al lado de la Alcaldía" />
         <meta name="zipcode" content="0101" />
         <meta name="city" content="Bocas Town" />
         <meta name="state" content="Bocas del Toro" />
-        <meta name="country" content="Panama" />
-        
-        {/* Service Area */}
-        <meta name="service-area" content="Isla Colón, Bocas del Toro, Panama" />
-        <meta name="coverage" content="Isla Colón, Bocas del Toro" />
-        
-        {/* Payment Methods */}
-        <meta name="payment" content="cash, yappy, credit card" />
-        
+        <meta name="country" content="Panamá" />
+
+        {/* Payment */}
+        <meta name="payment" content="efectivo, yappy, tarjeta de crédito" />
+
         {/* Language Alternates */}
-        <link rel="alternate" hreflang="es" href="https://caribbean-scooters.vercel.app/es" />
+        <link rel="alternate" hreflang="en" href="https://caribbean-scooters.vercel.app/" />
         <link rel="alternate" hreflang="pt" href="https://caribbean-scooters.vercel.app/br" />
+        <link rel="alternate" hreflang="es" href="https://caribbean-scooters.vercel.app/es" />
         <link rel="alternate" hreflang="x-default" href="https://caribbean-scooters.vercel.app" />
       </head>
+
       <body className={`${inter.className} antialiased`}>
         {children}
-        
+
         {/* Performance Monitoring */}
         <script
           dangerouslySetInnerHTML={{
             __html: `
-              // Performance monitoring
               window.addEventListener('load', function() {
                 setTimeout(function(){
-                  // Send to analytics
                   if (typeof gtag !== 'undefined') {
                     gtag('event', 'load_time', {
                       'event_category': 'Performance',
@@ -295,8 +284,6 @@ export default function RootLayout({ children }) {
                   }
                 }, 0);
               });
-              
-              // Schema.org markup for current page
               window.pageSchema = ${JSON.stringify(rentalBusinessSchema)};
             `
           }}

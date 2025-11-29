@@ -1,0 +1,15 @@
+User-agent: *
+Allow: /
+Allow: /es
+Allow: /br
+Disallow: /api/
+Disallow: /admin/
+
+User-agent: Googlebot
+Allow: /
+Allow: /es
+Allow: /br
+Crawl-delay: 1
+
+Sitemap: https://caribbean-scooters.vercel.app/sitemap.xml
+Host: https://caribbean-scooters.vercel.app
