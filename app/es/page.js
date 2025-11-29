@@ -23,268 +23,286 @@ export default function Home() {
   const [selectedPlan, setSelectedPlan] = useState(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [lightboxImage, setLightboxImage] = useState(null);
-  const [language, setLanguage] = useState('es'); // 'es' for Spanish, 'en' for English
+  const [selectedDestination, setSelectedDestination] = useState(null);
+  const [language, setLanguage] = useState('es');
   const { scrollYProgress } = useScroll();
   const headerOpacity = useTransform(scrollYProgress, [0, 0.1], [1, 0.95]);
 
-  const content = {
-    es: {
-      nav: {
-        destinations: "Destinos",
-        pricing: "Precios",
-        faq: "Preguntas",
-        contact: "Contacto"
-      },
-      hero: {
-        title: "Explora <span>Bocas del Toro</span> a Tu Manera",
-        subtitle: "Renta un scooter y descubre el paraíso caribeño de Panamá. Libertad, aventura y recuerdos inolvidables te esperan.",
-        cta1: "Ver Precios",
-        cta2: "Contáctanos"
-      },
-      about: {
-        title: "¿Por qué <span>Scooter</span> en Bocas?",
-        description1: "Bocas del Toro es un archipiélago tropical en la costa caribeña de Panamá, famoso por sus playas prístinas, selvas exuberantes y vibrante cultura isleña. Isla Colón, la isla principal, es perfecta para explorar en scooter.",
-        description2: "Salta los taxis llenos y descubre playas escondidas, restaurantes locales y miradores impresionantes a tu propio ritmo. Desde las poderosas olas de Bluff Beach hasta la serena Starfish Beach, tu aventura comienza aquí.",
-        features: [
-          "Explora 15+ playas de Isla Colón",
-          "Visita Boca del Drago & Starfish Beach",
-          "Descubre spots de surf locales en Bluff Beach",
-          "Encuentra senderos de jungla y miradores escondidos"
-        ]
-      },
-      destinations: {
-        title: "Explora el <span>Paraíso</span>",
-        subtitle: "Descubre las playas más hermosas de Isla Colón en tu scooter",
-        places: [
-          { 
-            name: "Boca del Drago", 
-            img: "/bocadeldrago.webp", 
-            desc: "Aguas cristalinas y la puerta a Starfish Beach. Perfecto para un día relajante.", 
-            distance: "30 min en scooter" 
-          },
-          { 
-            name: "Starfish Beach", 
-            img: "/starfish.webp", 
-            desc: "Famosa por sus estrellas de mar rojas en aguas turquesas poco profundas. ¡Un paraíso imperdible!", 
-            distance: "35 min en scooter" 
-          },
-          { 
-            name: "Bluff Beach", 
-            img: "/bluff.webp", 
-            desc: "Playa salvaje con olas poderosas. Ideal para surfistas experimentados y amantes de la naturaleza.", 
-            distance: "15 min en scooter" 
-          },
-          { 
-            name: "Paunch", 
-            img: "/paunch.webp", 
-            desc: "Spot de surf popular con olas consistentes. Ambiente relajado y bares playeros cerca.", 
-            distance: "10 min en scooter" 
-          },
-        ]
-      },
-      features: {
-        title: "Qué está <span>Incluido</span>",
-        subtitle: "Todo lo que necesitas para una aventura isleña sin preocupaciones",
-        items: [
-          { icon: "🛵", title: "Flota Bien Mantenida", desc: "Scooters confiables revisados regularmente para tu seguridad" },
-          { icon: "⛽", title: "Tanque Lleno Incluido", desc: "Comienza tu aventura con el tanque lleno de gasolina" },
-          { icon: "🪖", title: "Cascos Incluidos", desc: "Cascos de seguridad incluidos con cada renta" },
-          { icon: "🗺️", title: "Mapas de la Isla", desc: "Mapas gratuitos con las mejores rutas y lugares secretos" },
-          { icon: "📞", title: "Soporte 24/7", desc: "Asistencia en carretera cuando la necesites" },
-          { icon: "🔄", title: "Devoluciones Flexibles", desc: "Fácil recogida y entrega en Bocas Town" },
-        ]
-      },
-      gallery: {
-        title: "Tu <span>Aventura</span> Espera",
-        subtitle: "Descubre la belleza de Bocas del Toro en dos ruedas"
-      },
-      pricing: {
-        title: "Precios <span>Sencillos</span>",
-        subtitle: "Sin cargos ocultos. Rentas más largas = mayores ahorros.",
-        plans: [
-          { duration: "2 Horas", price: 25, perDay: false, popular: false },
-          { duration: "4 Horas", price: 35, perDay: false, popular: false },
-          { duration: "Día Completo", price: 45, perDay: false, popular: true },
-          { duration: "24 Horas", price: 50, perDay: false, popular: false },
-          { duration: "3 Días", price: 40, perDay: true, popular: false },
-          { duration: "7 Días", price: 30, perDay: true, savings: "Mejor Valor", popular: false },
-          { duration: "2 Semanas", price: 25, perDay: true, popular: false },
-          { duration: "Mensual", price: 20, perDay: true, popular: false },
-        ],
-        note: "* Depósito reembolsable de $100 requerido. Se acepta efectivo o tarjeta.",
-        bookNow: "Reservar Ahora",
-        popular: "Más Popular"
-      },
-      faq: {
-        title: "Preguntas <span>Frecuentes</span>",
-        items: [
-          { 
-            q: "¿Necesito licencia para rentar?", 
-            a: "Sí, se requiere licencia de conducir válida. Se aceptan licencias internacionales." 
-          },
-          { 
-            q: "¿Qué incluye la renta?", 
-            a: "Cada renta incluye el scooter, casco, tanque lleno de gasolina, mapa de la isla y soporte 24/7." 
-          },
-          { 
-            q: "¿Puedo llevar el scooter a otras islas?", 
-            a: "Los scooters son solo para Isla Colón. Recomendamos taxis acuáticos para saltar entre islas." 
-          },
-          { 
-            q: "¿Qué pasa si se descompone el scooter?", 
-            a: "¡Llámanos cuando sea! Ofrecemos asistencia en carretera gratuita y scooters de reemplazo." 
-          },
-          { 
-            q: "¿Se requiere depósito?", 
-            a: "Sí, se requiere un depósito reembolsable de $100, pagadero en efectivo o tarjeta." 
-          },
-        ]
-      },
-      contact: {
-        title: "¿Listo para <span>Manejar</span>?",
-        subtitle: "Visítanos en Bocas Town o contáctanos al instante",
-        addressTitle: "Encuéntranos",
-        address: "Calle Segunda, Bocas Town<br />Junto al Municipio<br />Isla Colón, Bocas del Toro, Panamá",
-        hours: "Abierto Diariamente: 8:00 AM - 6:00 PM",
-        mapTitle: "Encuéntranos en el Mapa",
-        whatsapp: "WhatsApp",
-        email: "Enviar Email"
-      },
-      footer: {
-        copyright: "© 2025 Caribbean Scooters. Bocas del Toro, Panamá.",
-        madeBy: "Hecho con ❤️ por"
-      }
+const content = {
+  es: {
+    nav: {
+      destinations: "Destinos",
+      pricing: "Precios",
+      faq: "Preguntas Frecuentes",
+      contact: "Contacto"
     },
-    en: {
-      nav: {
-        destinations: "Destinations",
-        pricing: "Prices",
-        faq: "FAQ",
-        contact: "Contact"
+    hero: {
+      title: "Explora <span>Bocas del Toro</span> a Tu Manera",
+      subtitle: "Renta una scooter y descubre el paraíso caribeño de Panamá. Libertad, aventura y recuerdos inolvidables te esperan.",
+      cta1: "Ver Precios",
+      cta2: "Contáctanos"
+    },
+    about: {
+      title: "Honda Navi 120cc Automática",
+      subtitle: "La Compañera Perfecta para tu Aventura en Bocas",
+      floatingBadge: {
+        line1: "100% Automática",
+        line2: "Fácil de Manejar"
       },
-      hero: {
-        title: "Explore <span>Bocas del Toro</span> Your Way",
-        subtitle: "Rent a scooter and discover Panama's Caribbean paradise. Freedom, adventure, and unforgettable memories await.",
-        cta1: "View Prices",
-        cta2: "Contact Us"
-      },
-      about: {
-        title: "Why <span>Scooter</span> in Bocas?",
-        description1: "Bocas del Toro is a tropical archipelago on Panama's Caribbean coast, famous for its pristine beaches, lush rainforests, and vibrant island culture. Isla Colón, the main island, is perfect for exploring by scooter.",
-        description2: "Skip the crowded taxis and discover hidden beaches, local restaurants, and breathtaking viewpoints at your own pace. From Bluff Beach's powerful waves to the serene Starfish Beach, your adventure starts here.",
-        features: [
-          "Explore Isla Colón's 15+ beaches",
-          "Visit Boca del Drago & Starfish Beach",
-          "Discover local surf spots at Bluff Beach",
-          "Find hidden jungle trails & viewpoints"
-        ]
-      },
-      destinations: {
-        title: "Explore <span>Paradise</span>",
-        subtitle: "Discover Isla Colón's most beautiful beaches on your scooter",
-        places: [
-          { 
-            name: "Boca del Drago", 
-            img: "/bocadeldrago.webp", 
-            desc: "Crystal-clear waters and the gateway to Starfish Beach. Perfect for a relaxing day trip.", 
-            distance: "30 min ride" 
-          },
-          { 
-            name: "Starfish Beach", 
-            img: "/starfish.webp", 
-            desc: "Famous for its red starfish in shallow turquoise waters. A must-visit paradise!", 
-            distance: "35 min ride" 
-          },
-          { 
-            name: "Bluff Beach", 
-            img: "/bluff.webp", 
-            desc: "Wild surf beach with powerful waves. Great for experienced surfers and nature lovers.", 
-            distance: "15 min ride" 
-          },
-          { 
-            name: "Paunch", 
-            img: "/paunch.webp", 
-            desc: "Popular surf spot with consistent waves. Chill vibes and beach bars nearby.", 
-            distance: "10 min ride" 
-          },
-        ]
-      },
-      features: {
-        title: "What's <span>Included</span>",
-        subtitle: "Everything you need for a worry-free island adventure",
-        items: [
-          { icon: "🛵", title: "Well-Maintained Fleet", desc: "Reliable scooters serviced regularly for your safety" },
-          { icon: "⛽", title: "Full Tank Included", desc: "Start your adventure with a full tank of gas" },
-          { icon: "🪖", title: "Helmets Provided", desc: "Safety helmets included with every rental" },
-          { icon: "🗺️", title: "Island Maps", desc: "Free maps with best routes and hidden spots" },
-          { icon: "📞", title: "24/7 Support", desc: "Roadside assistance whenever you need it" },
-          { icon: "🔄", title: "Flexible Returns", desc: "Easy pickup and drop-off in Bocas Town" },
-        ]
-      },
-      gallery: {
-        title: "Your <span>Adventure</span> Awaits",
-        subtitle: "Discover the beauty of Bocas del Toro on two wheels"
-      },
-      pricing: {
-        title: "Simple <span>Pricing</span>",
-        subtitle: "No hidden fees. Longer rentals = bigger savings.",
-        plans: [
-          { duration: "2 Hours", price: 25, perDay: false, popular: false },
-          { duration: "4 Hours", price: 35, perDay: false, popular: false },
-          { duration: "Full Day", price: 45, perDay: false, popular: true },
-          { duration: "24 Hours", price: 50, perDay: false, popular: false },
-          { duration: "3 Days", price: 40, perDay: true, popular: false },
-          { duration: "7 Days", price: 30, perDay: true, savings: "Best Value", popular: false },
-          { duration: "2 Weeks", price: 25, perDay: true, popular: false },
-          { duration: "Monthly", price: 20, perDay: true, popular: false },
-        ],
-        note: "* Refundable deposit of $100 required. Cash or card accepted.",
-        bookNow: "Book Now",
-        popular: "Most Popular"
-      },
-      faq: {
-        title: "Common <span>Questions</span>",
-        items: [
-          { 
-            q: "Do I need a license to rent?", 
-            a: "Yes, a valid driver's license is required. International licenses are accepted." 
-          },
-          { 
-            q: "What's included in the rental?", 
-            a: "Each rental includes the scooter, helmet, full tank of gas, island map, and 24/7 support." 
-          },
-          { 
-            q: "Can I take the scooter to other islands?", 
-            a: "Scooters are for Isla Colón only. We recommend water taxis for island hopping." 
-          },
-          { 
-            q: "What happens if the scooter breaks down?", 
-            a: "Call us anytime! We provide free roadside assistance and replacement scooters." 
-          },
-          { 
-            q: "Is there a deposit required?", 
-            a: "Yes, a refundable deposit of $100 is required, payable in cash or card." 
-          },
-        ]
-      },
-      contact: {
-        title: "Ready to <span>Ride</span>?",
-        subtitle: "Visit us in Bocas Town or contact us instantly",
-        addressTitle: "Find Us",
-        address: "Calle Segunda, Bocas Town<br />Next to City Hall<br />Isla Colón, Bocas del Toro, Panama",
-        hours: "Open Daily: 8:00 AM - 6:00 PM",
-        mapTitle: "Find Us on the Map",
-        whatsapp: "WhatsApp",
-        email: "Send Email"
-      },
-      footer: {
-        copyright: "© 2025 Caribbean Scooters. Bocas del Toro, Panama.",
-        madeBy: "Made with ❤️ by"
-      }
+      whyTitle: "¿Por qué la Honda Navi?",
+      description1: "Nuestra exclusiva flota de Honda Navi 120cc está diseñada específicamente para la exploración tropical. Automática, confiable e increíblemente fácil de manejar, incluso si nunca has conducido una scooter.",
+      description2: "La Honda Navi combina lo mejor de ambos mundos: la agilidad de una scooter con la robustez de una motocicleta. Perfecta para las carreteras de Bocas del Toro, desde el centro hasta las playas más remotas.",
+      specs: [
+        { label: "Motor", value: "120cc 4 tiempos" },
+        { label: "Transmisión", value: "Automática (CVT)" },
+        { label: "Capacidad", value: "1–2 personas" },
+        { label: "Consumo", value: "~60 km/litro" }
+      ],
+      features: [
+        "Transmisión automática: sin clutch ni cambios",
+        "Llantas más grandes para caminos de tierra y carreteras irregulares",
+        "Centro de gravedad bajo para mayor estabilidad",
+        "Tanque de 3.8L: ideal para días completos de exploración",
+        "Asiento cómodo para dos personas",
+        "Adaptada para el clima tropical y los caminos de Bocas"
+      ]
+    },
+    destinations: {
+      title: "Explora el <span>Paraíso</span>",
+      subtitle: "Descubre las playas más hermosas de Isla Colón en tu scooter",
+      places: [
+        { 
+          name: "Boca del Drago",
+          img: "/bocadeldrago.webp",
+          map: "/mapBocaDelDrago.png",
+          desc: "Aguas cristalinas y la entrada a la Playa de las Estrellas. Perfecto para un día relajado.",
+          distance: "30 min en scooter",
+          fullDescription: "Boca del Drago es una de las playas más hermosas de Isla Colón, famosa por sus aguas tranquilas y turquesas y sus formaciones coralinas. Es el punto de partida ideal para visitar la famosa Playa de las Estrellas, donde puedes ver cientos de estrellas de mar en su hábitat natural."
+        },
+        { 
+          name: "Playa de las Estrellas",
+          img: "/starfish.webp",
+          map: "/mapEstrella.png",
+          desc: "Famosa por sus estrellas de mar rojas en aguas turquesas poco profundas. ¡Un paraíso imperdible!",
+          distance: "35 min en scooter",
+          fullDescription: "Playa de las Estrellas (Starfish Beach) es mundialmente conocida por sus aguas cristalinas y poco profundas llenas de vibrantes estrellas de mar rojas. Esta playa prístina ofrece una combinación perfecta de belleza natural y tranquilidad. Recuerda mirar, pero no tocar las estrellas para proteger este delicado ecosistema."
+        },
+        { 
+          name: "Bluff Beach",
+          img: "/bluff.webp",
+          map: "/mapBluff.png",
+          desc: "Playa salvaje con olas poderosas. Ideal para surfistas experimentados y amantes de la naturaleza.",
+          distance: "30 min en scooter",
+          fullDescription: "Bluff Beach es una costa salvaje y extensa conocida por sus olas poderosas y fuertes corrientes. Es el paraíso de los surfistas y un importante lugar de anidación para tortugas marinas. La belleza cruda y natural de Bluff la convierte en un destino perfecto para quienes buscan aventura."
+        },
+        { 
+          name: "Paunch",
+          img: "/paunch.webp",
+          map: "/mapPaunch.png",
+          desc: "Spot de surf popular con olas constantes. Buen ambiente y bares de playa cercanos.",
+          distance: "15 min en scooter",
+          fullDescription: "Paunch es un famoso punto de surf ubicado a pocos minutos del pueblo. Con olas constantes para todos los niveles, es el lugar perfecto para aprender a surfear o disfrutar una sesión al atardecer. Varios bares de playa cercanos ofrecen bebidas y un ambiente relajado."
+        }
+      ]
+    },
+    features: {
+      title: "Qué Está <span>Incluido</span>",
+      subtitle: "Todo lo que necesitas para una aventura sin preocupaciones",
+      items: [
+        { icon: "🛵", title: "Flota Bien Mantenida", desc: "Scooters confiables revisadas regularmente para tu seguridad" },
+        { icon: "⛽", title: "Entrega a Domicilio", desc: "Entregamos y recogemos donde el cliente desee" },
+        { icon: "🪖", title: "Cascos Incluidos", desc: "Cascos de seguridad incluidos con cada renta" },
+        { icon: "📞", title: "Asistencia", desc: "Soporte en carretera cuando lo necesites" },
+        { icon: "🔄", title: "Devoluciones Flexibles", desc: "Fácil entrega y devolución en Bocas Town" },
+      ]
+    },
+    gallery: {
+      title: "Tu Aventura Te Espera",
+      subtitle: "Descubre la belleza de Bocas del Toro sobre dos ruedas"
+    },
+    pricing: {
+      title: "Precios <span>Simples</span>",
+      subtitle: "Sin tarifas ocultas. Más días = más ahorro.",
+      plans: [
+        { duration: "2 Horas", price: 25, perDay: false, popular: false },
+        { duration: "4 Horas", price: 35, perDay: false, popular: false },
+        { duration: "Día Completo", price: 45, perDay: false, popular: true },
+        { duration: "24 Horas", price: 50, perDay: false, popular: false },
+        { duration: "3 Días", price: 40, perDay: true, popular: false },
+        { duration: "7 Días", price: 35, perDay: true, savings: "Mejor Oferta", popular: false },
+        { duration: "2 Semanas", price: 30, perDay: true, popular: false },
+        { duration: "Mensual", price: 25, perDay: true, popular: false },
+      ],
+      note: "* Se requiere un depósito reembolsable de $100. Aceptamos efectivo o Yappy.",
+      bookNow: "Reservar Ahora",
+      popular: "Más Popular"
+    },
+    faq: {
+      title: "Preguntas <span>Frecuentes</span>",
+      items: [
+        { 
+          q: "¿Necesito licencia para rentar?", 
+          a: "Sí, se requiere una licencia de conducir válida. Las licencias internacionales son aceptadas." 
+        },
+        { 
+          q: "¿Qué incluye la renta?", 
+          a: "Cada renta incluye la scooter, casco y soporte para teléfono." 
+        },
+        { 
+          q: "¿Puedo llevar la scooter a otras islas?", 
+          a: "Las scooters son solo para Isla Colón. Recomendamos water taxis para viajar entre islas." 
+        },
+        { 
+          q: "¿Qué pasa si la scooter se descompone?", 
+          a: "El cliente es responsable por daños causados por mal uso. Caribbean Scooter se hace responsable por daños derivados de desgaste normal o fallas mecánicas." 
+        },
+        { 
+          q: "¿Qué tipo de scooter renta Caribbean Scooter?", 
+          a: "Caribbean Scooter trabaja únicamente con HONDA NAVI, 120cc, automática, perfecta para una o dos personas." 
+        }
+      ]
+    },
+    contact: {
+      title: "¿Listo para <span>Rodar</span>?",
+      subtitle: "Visítanos en Bocas Town o contáctanos al instante",
+      addressTitle: "Encuéntranos",
+      address: "Calle Segunda, Bocas Town<br />Al lado del Municipio<br />Isla Colón, Bocas del Toro, Panamá",
+      hours: "Abierto Todos los Días: 8:00 AM – 6:00 PM",
+      mapTitle: "Encuéntranos en el Mapa",
+      whatsapp: "WhatsApp",
+      email: "Enviar Email"
+    },
+    footer: {
+      copyright: "© 2025 Caribbean Scooters. Bocas del Toro, Panamá.",
+      madeBy: "Hecho con ❤️ por"
+    },
+    modals: {
+      close: "Cerrar",
+      viewMap: "Ver Mapa",
+      getDirections: "Obtener Direcciones"
     }
-  };
+  }
+};
+
 
   const t = content[language];
+
+  // Lightbox Modal Component
+  const LightboxModal = () => {
+    if (!lightboxImage) return null;
+
+    return (
+      <motion.div
+        className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        onClick={() => setLightboxImage(null)}
+      >
+        <div className="relative max-w-4xl max-h-[90vh] mx-4">
+          <motion.div
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.3 }}
+            className="relative"
+          >
+            <Image
+              src={lightboxImage}
+              alt="Full size view"
+              width={1200}
+              height={800}
+              className="object-contain max-h-[80vh] rounded-lg"
+            />
+            <button
+              className="absolute -top-12 right-0 text-white text-2xl hover:text-[#ffba08] transition-colors"
+              onClick={() => setLightboxImage(null)}
+            >
+              ✕
+            </button>
+          </motion.div>
+        </div>
+      </motion.div>
+    );
+  };
+
+  // Destination Modal Component
+  const DestinationModal = () => {
+    if (!selectedDestination) return null;
+
+    return (
+      <motion.div
+        className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm p-4"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        onClick={() => setSelectedDestination(null)}
+      >
+        <motion.div
+          initial={{ scale: 0.8, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 0.3 }}
+          className="bg-[#1a1a1a] rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto"
+          onClick={(e) => e.stopPropagation()}
+        >
+          <div className="relative">
+            {/* Header Image */}
+            <div className="relative h-64 md:h-80 rounded-t-2xl overflow-hidden">
+              <Image
+                src={selectedDestination.img}
+                alt={selectedDestination.name}
+                fill
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
+              <div className="absolute bottom-6 left-6">
+                <h3 className="text-3xl md:text-4xl font-bold text-white mb-2">
+                  {selectedDestination.name}
+                </h3>
+                <span className="inline-block bg-[#e85d04]/90 text-white text-sm font-semibold px-3 py-1 rounded-full">
+                  {selectedDestination.distance}
+                </span>
+              </div>
+              <button
+                className="absolute top-4 right-4 text-white text-2xl hover:text-[#ffba08] transition-colors bg-black/50 rounded-full p-2"
+                onClick={() => setSelectedDestination(null)}
+              >
+                ✕
+              </button>
+            </div>
+
+            {/* Content */}
+            <div className="p-6 md:p-8">
+              <div className="grid md:grid-cols-2 gap-8">
+                {/* Description */}
+                <div>
+                  <h4 className="text-xl font-semibold mb-4 text-[#ffba08]">About this spot</h4>
+                  <p className="text-gray-300 leading-relaxed">
+                    {selectedDestination.fullDescription}
+                  </p>
+                  <p className="text-gray-300 mt-4 leading-relaxed">
+                    {selectedDestination.desc}
+                  </p>
+                </div>
+
+                {/* Map */}
+                <div>
+                  <div className="relative h-64 md:h-80 rounded-xl overflow-hidden border border-white/10">
+                    <Image
+                      src={selectedDestination.map}
+                      alt={`Map of ${selectedDestination.name}`}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+      </motion.div>
+    );
+  };
 
   return (
     <main className="bg-[#0a0a0a] text-white min-h-screen overflow-x-hidden">
@@ -299,109 +317,108 @@ export default function Home() {
         </div>
         
         <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">
-          {/* Navigation */}
-                <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">
-          {/* Navigation */}
-          <motion.nav
-            className="fixed top-0 left-0 right-0 z-50"
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <div className="max-w-6xl mx-auto px-4 py-4">
-              <div className="flex items-center justify-between">
-                
-                {/* Logo */}
-                <a 
-                  href="#"
-                  className="flex items-center gap-2 opacity-90 hover:opacity-100 transition-opacity"
-                >
-                  <Image src="/logoTrans.png" alt="Caribbean Scooters" width={36} height={36} />
-                </a>
-        
-                {/* Desktop Menu */}
-                <div className="hidden md:flex items-center gap-8 text-sm text-white/70">
-                  <a href="#destinations" className="hover:text-white transition-colors">Destinations</a>
-                  <a href="#pricing" className="hover:text-white transition-colors">Prices</a>
-                  <a href="#faq" className="hover:text-white transition-colors">FAQ</a>
-                  <a href="#contact" className="text-white border-b border-white/50 hover:border-white pb-0.5 transition-colors">Contact</a>
-                </div>
-        
-                {/* Desktop Language Switcher */}
-                <motion.div 
-                  className="hidden md:flex items-center gap-3 text-white/80 ml-6"
-                  initial={{ opacity: 0, y: -5 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4, delay: 0.2 }}
-                >
-                  <a href="/" className="px-2 py-1 rounded-md hover:bg-white/10 hover:text-white transition">EN</a>
-                  <a href="/es" className="px-2 py-1 rounded-md hover:bg-white/10 hover:text-white transition">ES</a>
-                  <a href="/br" className="px-2 py-1 rounded-md hover:bg-white/10 hover:text-white transition">BR</a>
-                </motion.div>
-        
-                {/* Mobile Burger */}
-                <button 
-                  className="md:hidden text-white p-2"
-                  onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                >
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    {mobileMenuOpen ? (
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                    ) : (
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                    )}
-                  </svg>
-                </button>
-        
-              </div>
-        
-              {/* Mobile Menu */}
-              {mobileMenuOpen && (
-                <motion.div 
-                  className="md:hidden mt-4 bg-[#0a0a0a]/95 backdrop-blur-sm rounded-lg border border-white/10 p-4"
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <div className="flex flex-col gap-4 text-white/80">
-                    <a href="#destinations" onClick={() => setMobileMenuOpen(false)} className="hover:text-white transition-colors py-2">Destinations</a>
-                    <a href="#pricing" onClick={() => setMobileMenuOpen(false)} className="hover:text-white transition-colors py-2">Prices</a>
-                    <a href="#faq" onClick={() => setMobileMenuOpen(false)} className="hover:text-white transition-colors py-2">FAQ</a>
-                    <a href="#contact" onClick={() => setMobileMenuOpen(false)} className="hover:text-white transition-colors py-2 border-t border-white/10 pt-4">Contact</a>
-                  </div>
-        
-                  {/* Mobile Language Switcher */}
-                  <div className="border-t border-white/10 pt-4 mt-3">
-                    <div className="flex items-center justify-center gap-4 text-white">
-                      <a 
-                        href="/" 
-                        onClick={() => setMobileMenuOpen(false)} 
-                        className="px-3 py-1 rounded-md bg-white/10 hover:bg-white/20 transition"
-                      >
-                        EN
-                      </a>
-                      <a 
-                        href="/es" 
-                        onClick={() => setMobileMenuOpen(false)} 
-                        className="px-3 py-1 rounded-md bg-white/10 hover:bg-white/20 transition"
-                      >
-                        ES
-                      </a>
-                      <a 
-                        href="/br" 
-                        onClick={() => setMobileMenuOpen(false)} 
-                        className="px-3 py-1 rounded-md bg-white/10 hover:bg-white/20 transition"
-                      >
-                        BR
-                      </a>
-                    </div>
-                  </div>
-                </motion.div>
-              )}
-        
-            </div>
-          </motion.nav>
-        </div>
+ <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">
+                   {/* Navigation */}
+                   <motion.nav
+                     className="fixed top-0 left-0 right-0 z-50"
+                     initial={{ opacity: 0, y: -10 }}
+                     animate={{ opacity: 1, y: 0 }}
+                     transition={{ duration: 0.5 }}
+                   >
+                     <div className="max-w-6xl mx-auto px-4 py-4">
+                       <div className="flex items-center justify-between">
+                         
+                         {/* Logo */}
+                         <a 
+                           href="#"
+                           className="flex items-center gap-2 opacity-90 hover:opacity-100 transition-opacity"
+                         >
+                           <Image src="/logoTrans.png" alt="Caribbean Scooters" width={36} height={36} />
+                         </a>
+                 
+                         {/* Desktop Menu */}
+                         <div className="hidden md:flex items-center gap-8 text-sm text-white/70">
+                           <a href="#destinations" className="hover:text-white transition-colors">Destinations</a>
+                           <a href="#pricing" className="hover:text-white transition-colors">Prices</a>
+                           <a href="#faq" className="hover:text-white transition-colors">FAQ</a>
+                           <a href="#contact" className="text-white border-b border-white/50 hover:border-white pb-0.5 transition-colors">Contact</a>
+                         </div>
+                 
+                         {/* Desktop Language Switcher */}
+                         <motion.div 
+                           className="hidden md:flex items-center gap-3 text-white/80 ml-6"
+                           initial={{ opacity: 0, y: -5 }}
+                           animate={{ opacity: 1, y: 0 }}
+                           transition={{ duration: 0.4, delay: 0.2 }}
+                         >
+                           <a href="/" className="px-2 py-1 rounded-md hover:bg-white/10 hover:text-white transition">EN</a>
+                           <a href="/es" className="px-2 py-1 rounded-md hover:bg-white/10 hover:text-white transition">ES</a>
+                           <a href="/br" className="px-2 py-1 rounded-md hover:bg-white/10 hover:text-white transition">BR</a>
+                         </motion.div>
+                 
+                         {/* Mobile Burger */}
+                         <button 
+                           className="md:hidden text-white p-2"
+                           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                         >
+                           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                             {mobileMenuOpen ? (
+                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                             ) : (
+                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                             )}
+                           </svg>
+                         </button>
+                 
+                       </div>
+                 
+                       {/* Mobile Menu */}
+                       {mobileMenuOpen && (
+                         <motion.div 
+                           className="md:hidden mt-4 bg-[#0a0a0a]/95 backdrop-blur-sm rounded-lg border border-white/10 p-4"
+                           initial={{ opacity: 0, y: -10 }}
+                           animate={{ opacity: 1, y: 0 }}
+                           transition={{ duration: 0.2 }}
+                         >
+                           <div className="flex flex-col gap-4 text-white/80">
+                             <a href="#destinations" onClick={() => setMobileMenuOpen(false)} className="hover:text-white transition-colors py-2">Destinations</a>
+                             <a href="#pricing" onClick={() => setMobileMenuOpen(false)} className="hover:text-white transition-colors py-2">Prices</a>
+                             <a href="#faq" onClick={() => setMobileMenuOpen(false)} className="hover:text-white transition-colors py-2">FAQ</a>
+                             <a href="#contact" onClick={() => setMobileMenuOpen(false)} className="hover:text-white transition-colors py-2 border-t border-white/10 pt-4">Contact</a>
+                           </div>
+                 
+                           {/* Mobile Language Switcher */}
+                           <div className="border-t border-white/10 pt-4 mt-3">
+                             <div className="flex items-center justify-center gap-4 text-white">
+                               <a 
+                                 href="/" 
+                                 onClick={() => setMobileMenuOpen(false)} 
+                                 className="px-3 py-1 rounded-md bg-white/10 hover:bg-white/20 transition"
+                               >
+                                 EN
+                               </a>
+                               <a 
+                                 href="/es" 
+                                 onClick={() => setMobileMenuOpen(false)} 
+                                 className="px-3 py-1 rounded-md bg-white/10 hover:bg-white/20 transition"
+                               >
+                                 ES
+                               </a>
+                               <a 
+                                 href="/br" 
+                                 onClick={() => setMobileMenuOpen(false)} 
+                                 className="px-3 py-1 rounded-md bg-white/10 hover:bg-white/20 transition"
+                               >
+                                 BR
+                               </a>
+                             </div>
+                           </div>
+                         </motion.div>
+                       )}
+                 
+                     </div>
+                   </motion.nav>
+                 </div>
 
           <motion.div
             initial={{ opacity: 0, y: -20 }}
@@ -454,47 +471,79 @@ export default function Home() {
         </motion.div>
       </motion.section>
 
-      {/* About Bocas Section */}
-      <section className="py-24 px-4">
-        <div className="max-w-6xl mx-auto">
-          <motion.div 
-            className="grid md:grid-cols-2 gap-12 items-center"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={staggerContainer}
-          >
-            <motion.div variants={fadeInUp}>
-              <h2 
-                className="text-4xl md:text-5xl font-bold mb-6"
-                dangerouslySetInnerHTML={{ __html: t.about.title }}
-              />
-              <p className="text-gray-400 text-lg mb-6 leading-relaxed">
+      {/* About Honda Navi Section */}
+      <section id="about" className="py-24 px-4 bg-gradient-to-b from-[#121212] to-black">
+        <motion.div 
+          className="max-w-6xl mx-auto"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={staggerContainer}
+        >
+          <motion.div className="text-center mb-16" variants={fadeInUp}>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-[#ffba08] to-[#d00000] bg-clip-text text-transparent">
+              {t.about.title}
+            </h2>
+            <p className="text-xl text-gray-400 max-w-3xl mx-auto">{t.about.subtitle}</p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
+            {/* Left - Image */}
+            <motion.div variants={scaleIn} className="relative">
+              <div className="relative h-[400px] rounded-2xl overflow-hidden shadow-2xl">
+                <Image 
+                  src="/navi.jpg" 
+                  alt="Honda Navi 120cc"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              {/* Floating badge */}
+          {/* Floating badge */}
+<div className="absolute -bottom-6 -right-6 bg-[#ffba08] text-black px-6 py-4 rounded-xl shadow-xl">
+  <p className="text-sm font-semibold">{t.about.floatingBadge.line1}</p>
+  <p className="text-xs">{t.about.floatingBadge.line2}</p>
+</div>
+
+            </motion.div>
+
+            {/* Right - Description */}
+            <motion.div variants={fadeInUp} className="space-y-6">
+              <p className="text-gray-300 text-lg leading-relaxed">
                 {t.about.description1}
               </p>
-              <p className="text-gray-400 text-lg mb-6 leading-relaxed">
+              <p className="text-gray-300 text-lg leading-relaxed">
                 {t.about.description2}
               </p>
-              <ul className="space-y-3 text-gray-300">
-                {t.about.features.map((item, i) => (
-                  <motion.li key={i} className="flex items-center gap-3" variants={fadeInUp}>
-                    <span className="text-[#ffba08]">✓</span> {item}
-                  </motion.li>
-                ))}
-              </ul>
-            </motion.div>
-            
-            <motion.div 
-              className="relative h-[500px] rounded-2xl overflow-hidden"
-              variants={scaleIn}
-            >
-              <Image src="/bluff.webp" alt="Exploring Bocas del Toro by scooter" fill className="object-cover" />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a]/60 to-transparent" />
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
 
+              {/* Specs Grid */}
+              <div className="grid grid-cols-2 gap-4 pt-6">
+                {t.about.specs.map((spec, i) => (
+                  <div key={i} className="bg-white/5 border border-white/10 rounded-lg p-4">
+                    <p className="text-gray-500 text-sm mb-1">{spec.label}</p>
+                    <p className="text-white font-semibold">{spec.value}</p>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Features List */}
+          <motion.div variants={fadeInUp} className="bg-white/5 border border-white/10 rounded-2xl p-8 md:p-12">
+<h3 className="text-2xl font-bold mb-8 text-center">
+  {t.about.whyTitle}
+</h3>
+            <div className="grid md:grid-cols-2 gap-6">
+              {t.about.features.map((item, i) => (
+                <div key={i} className="flex items-start gap-4">
+                  <span className="text-[#ffba08] text-2xl mt-1">✓</span>
+                  <p className="text-gray-300 text-lg">{item}</p>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        </motion.div>
+      </section>
       {/* Destinations Section */}
       <section id="destinations" className="py-24 px-4 bg-gradient-to-b from-[#0a0a0a] to-[#111]">
         <div className="max-w-6xl mx-auto">
@@ -506,7 +555,7 @@ export default function Home() {
             variants={fadeInUp}
           >
             <h2 
-              className="text-4xl md:text-5xl font-bold mb-4"
+              className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-[#ffba08] to-[#d00000] bg-clip-text text-transparent"
               dangerouslySetInnerHTML={{ __html: t.destinations.title }}
             />
             <p className="text-gray-400 text-lg max-w-2xl mx-auto">{t.destinations.subtitle}</p>
@@ -522,9 +571,10 @@ export default function Home() {
             {t.destinations.places.map((dest, i) => (
               <motion.div
                 key={i}
-                className="group relative h-[300px] rounded-2xl overflow-hidden"
+                className="group relative h-[300px] rounded-2xl overflow-hidden cursor-pointer"
                 variants={fadeInUp}
                 whileHover={{ scale: 1.02, transition: { duration: 0.3 } }}
+                onClick={() => setSelectedDestination(dest)}
               >
                 <Image src={dest.img} alt={dest.name} fill className="object-cover transition-transform duration-500 group-hover:scale-110" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
@@ -543,42 +593,7 @@ export default function Home() {
 
       {/* Features Section */}
       <section className="py-24 px-4 bg-[#111]">
-        <div className="max-w-6xl mx-auto">
-          <motion.div 
-            className="text-center mb-16"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeInUp}
-          >
-            <h2 
-              className="text-4xl md:text-5xl font-bold mb-4"
-              dangerouslySetInnerHTML={{ __html: t.features.title }}
-            />
-            <p className="text-gray-400 text-lg max-w-2xl mx-auto">{t.features.subtitle}</p>
-          </motion.div>
-
-          <motion.div 
-            className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={staggerContainer}
-          >
-            {t.features.items.map((feature, i) => (
-              <motion.div
-                key={i}
-                className="bg-[#1a1a1a] p-6 rounded-xl border border-white/5 hover:border-[#e85d04]/30 transition-all group"
-                variants={fadeInUp}
-                whileHover={{ y: -5, transition: { duration: 0.2 } }}
-              >
-                <span className="text-4xl mb-4 block">{feature.icon}</span>
-                <h3 className="text-xl font-semibold mb-2 group-hover:text-[#ffba08] transition-colors">{feature.title}</h3>
-                <p className="text-gray-400">{feature.desc}</p>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
+        {/* Your existing features section code */}
       </section>
 
       {/* Gallery Section */}
@@ -591,10 +606,9 @@ export default function Home() {
             viewport={{ once: true }}
             variants={fadeInUp}
           >
-            <h2 
-              className="text-4xl md:text-5xl font-bold mb-4"
-              dangerouslySetInnerHTML={{ __html: t.gallery.title }}
-            />
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-[#ffba08] to-[#d00000] bg-clip-text text-transparent">
+              {t.gallery.title}
+            </h2>
             <p className="text-gray-400 text-lg">{t.gallery.subtitle}</p>
           </motion.div>
 
@@ -605,59 +619,66 @@ export default function Home() {
             viewport={{ once: true }}
             variants={staggerContainer}
           >
+            {/* Make all gallery images clickable */}
             <motion.div
-                className="relative rounded-xl overflow-hidden col-span-2 row-span-2 h-[400px]"
-                variants={scaleIn}
-                whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
-              >
-                <Image src="/3.jpg" alt="Bocas del Toro scooter adventure" fill className="object-cover" />
-                <div className="absolute inset-0 bg-black/20 hover:bg-black/0 transition-all" />
-              </motion.div>
-              <motion.div
-                className="relative rounded-xl overflow-hidden h-[190px]"
-                variants={scaleIn}
-                whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
-              >
-                <Image src="/lancha.webp" alt="Scooter rental Bocas del Toro" fill className="object-cover" />
-                <div className="absolute inset-0 bg-black/20 hover:bg-black/0 transition-all" />
-              </motion.div>
-              <motion.div
-                className="relative rounded-xl overflow-hidden h-[190px]"
-                variants={scaleIn}
-                whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
-              >
-                <Image src="/1.jpg" alt="Explore Isla Colon by scooter" fill className="object-cover" />
-                <div className="absolute inset-0 bg-black/20 hover:bg-black/0 transition-all" />
-              </motion.div>
-              <motion.div
-                className="relative rounded-xl overflow-hidden h-[190px]"
-                variants={scaleIn}
-                whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
-              >
-                <Image src="/bluff.webp" alt="Caribbean Scooters Bocas" fill className="object-cover" />
-                <div className="absolute inset-0 bg-black/20 hover:bg-black/0 transition-all" />
-              </motion.div>
-              <motion.div
-                className="relative rounded-xl overflow-hidden h-[190px]"
-                variants={scaleIn}
-                whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
-              >
-                <Image src="/hero.webp" alt="Rent scooter Panama" fill className="object-cover" />
-                <div className="absolute inset-0 bg-black/20 hover:bg-black/0 transition-all" />
-              </motion.div>
-              <motion.div
-                className="relative rounded-xl overflow-hidden h-[190px]"
-                variants={scaleIn}
-                whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
-              >
-                <Image src="/bocadeldrago.webp" alt="Bocas Town scooter rental" fill className="object-cover" />
-                <div className="absolute inset-0 bg-black/20 hover:bg-black/0 transition-all" />
-              </motion.div>
+              className="relative rounded-xl overflow-hidden col-span-2 row-span-2 h-[400px] cursor-pointer"
+              variants={scaleIn}
+              whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
+              onClick={() => setLightboxImage("/3.jpg")}
+            >
+              <Image src="/3.jpg" alt="Bocas del Toro scooter adventure" fill className="object-cover" />
+              <div className="absolute inset-0 bg-black/20 hover:bg-black/0 transition-all" />
+            </motion.div>
+            <motion.div
+              className="relative rounded-xl overflow-hidden h-[190px] cursor-pointer"
+              variants={scaleIn}
+              whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
+              onClick={() => setLightboxImage("/lancha.webp")}
+            >
+              <Image src="/lancha.webp" alt="Scooter rental Bocas del Toro" fill className="object-cover" />
+              <div className="absolute inset-0 bg-black/20 hover:bg-black/0 transition-all" />
+            </motion.div>
+            <motion.div
+              className="relative rounded-xl overflow-hidden h-[190px] cursor-pointer"
+              variants={scaleIn}
+              whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
+              onClick={() => setLightboxImage("/1.jpg")}
+            >
+              <Image src="/1.jpg" alt="Explore Isla Colon by scooter" fill className="object-cover" />
+              <div className="absolute inset-0 bg-black/20 hover:bg-black/0 transition-all" />
+            </motion.div>
+            <motion.div
+              className="relative rounded-xl overflow-hidden h-[190px] cursor-pointer"
+              variants={scaleIn}
+              whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
+              onClick={() => setLightboxImage("/bluff.webp")}
+            >
+              <Image src="/bluff.webp" alt="Caribbean Scooters Bocas" fill className="object-cover" />
+              <div className="absolute inset-0 bg-black/20 hover:bg-black/0 transition-all" />
+            </motion.div>
+            <motion.div
+              className="relative rounded-xl overflow-hidden h-[190px] cursor-pointer"
+              variants={scaleIn}
+              whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
+              onClick={() => setLightboxImage("/hero.webp")}
+            >
+              <Image src="/hero.webp" alt="Rent scooter Panama" fill className="object-cover" />
+              <div className="absolute inset-0 bg-black/20 hover:bg-black/0 transition-all" />
+            </motion.div>
+            <motion.div
+              className="relative rounded-xl overflow-hidden h-[190px] cursor-pointer"
+              variants={scaleIn}
+              whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
+              onClick={() => setLightboxImage("/bocadeldrago.webp")}
+            >
+              <Image src="/bocadeldrago.webp" alt="Bocas Town scooter rental" fill className="object-cover" />
+              <div className="absolute inset-0 bg-black/20 hover:bg-black/0 transition-all" />
+            </motion.div>
           </motion.div>
         </div>
       </section>
 
-      {/* Pricing Section */}
+       {/* Pricing Section */}
       <section id="pricing" className="py-24 px-4 bg-[#111]">
         <div className="max-w-5xl mx-auto">
           <motion.div 
@@ -704,7 +725,7 @@ export default function Home() {
                 <h3 className="text-lg font-semibold mb-2">{plan.duration}</h3>
                 <div className="mb-3">
                   <span className="text-3xl font-bold">${plan.price}</span>
-                  <span className="text-gray-400 text-sm">{plan.perDay ? " /día" : ""}</span>
+                  <span className="text-gray-400 text-sm">{plan.perDay ? " /dia" : ""}</span>
                 </div>
                 <a 
                   href="#contact"
@@ -720,14 +741,7 @@ export default function Home() {
             ))}
           </motion.div>
 
-          <motion.p 
-            className="text-center text-gray-500 mt-8"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-          >
-            {t.pricing.note}
-          </motion.p>
+
         </div>
       </section>
 
@@ -782,7 +796,7 @@ export default function Home() {
             variants={fadeInUp}
           >
             <h2 
-              className="text-4xl md:text-5xl font-bold mb-4"
+              className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-[#ffba08] to-[#d00000] bg-clip-text text-transparent"
               dangerouslySetInnerHTML={{ __html: t.contact.title }}
             />
             <p className="text-gray-400 text-lg">{t.contact.subtitle}</p>
@@ -853,29 +867,9 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="py-12 px-4 border-t border-white/5">
-        <div className="max-w-6xl mx-auto">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-            <div className="flex items-center gap-3">
-              <Image src="/logoTrans.png" alt="Caribbean Scooters" width={50} height={50} />
-              <span className="font-semibold text-lg">Caribbean Scooters</span>
-            </div>
-            <div className="text-center">
-              <p className="text-gray-500 text-sm">
-                {t.footer.copyright}
-              </p>
-              <p className="text-gray-600 text-sm mt-1">
-                {t.footer.madeBy} <a href="https://bocasdigital.com" target="_blank" rel="noopener noreferrer" className="text-[#ffba08] hover:underline">Bocas Digital</a>
-              </p>
-            </div>
-            <div className="flex gap-4">
-              <a href="https://www.instagram.com/scootercaribbean/" className="text-gray-400 hover:text-[#ffba08] transition-colors">Instagram</a>
-              <a href="https://www.facebook.com/profile.php?id=61569433118042" className="text-gray-400 hover:text-[#ffba08] transition-colors">Facebook</a>
-            </div>
-          </div>
-        </div>
-      </footer>
+      {/* Modals */}
+      <LightboxModal />
+      <DestinationModal />
     </main>
   );
 }
